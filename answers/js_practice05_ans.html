@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>練習課題5 解答例</title>
+</head>
+<body>
+
+<input type="text" id="box1" />
+<input type="text" id="box2" />
+<input type="button" value="計算する" onclick="calc()" />
+
+<h3>結果</h3>
+<div id="result">ここに足し算の結果が表示される</div>
+
+<script>
+    function calc() {
+        if(validate()) {
+            var box1Value = document.getElementById('box1').value;
+            var box2Value = document.getElementById('box2').value;
+            var result = parseInt(box1Value) + parseInt(box2Value);
+            document.getElementById('result').textContent = result;
+        } else {
+            alert("入力値は5桁以内の半角数字です")
+        }
+    }
+
+    function validate() {
+        var box1Value = document.getElementById('box1').value;
+        var box2Value = document.getElementById('box2').value;
+
+        var reg = new RegExp("^[0-9]{1,5}$");
+        if(reg.test(box1Value) && reg.test(box2Value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

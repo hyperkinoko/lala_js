@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>練習課題4 解答例</title>
+</head>
+<body>
+
+<input type="text" id="message" />
+<input type="button" value="削除" onclick="deleteText()" />
+<input type="button" value="表示" onclick="displayText()" />
+
+<script>
+    function deleteText() {
+        document.getElementById('message').value = '';
+    }
+
+    function displayText() {
+        var text = document.getElementById('message').value;
+        alert(text);
+    }
+</script>
+</body>
+</html>
