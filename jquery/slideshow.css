@@ -1,0 +1,42 @@
+#slideshow	{
+    position: relative;
+    width: 980px;
+    height: 230px;
+    overflow: hidden;
+    z-index: 1;
+}
+#pic_area	{
+    position: relative;
+    left: -980px;
+    width: 2940px;
+    height: 230px;
+    z-index: 0;
+}
+#pic_area img {
+    width: 980px;
+    position: absolute;
+    float: left;
+    z-index: 0;
+}
+#slider		{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#slider ul {
+    padding: 0;
+    margin :0;
+}
+#slider ul li {
+    float: left;
+    color: white;
+    padding: 0 4px;
+    font-size: 9px;
+    list-style-type: none;
+}
+ul li:hover {
+    cursor: pointer;
+}
