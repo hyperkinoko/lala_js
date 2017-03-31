@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>練習課題3</title>
+</head>
+
+<body>
+
+<div class="wrapper-header">
+    <div class="header">
+        <h1>セレクタについて</h1>
+        <p>このファイルには様々なidやクラスを持つ要素があります。このファイルにjQueryを記述して、色々なセレクタで要素を拾ってみてください</p>
+    </div><!-- /.header -->
+</div><!-- /.wrapper-header -->
+<div class="wrapper-category">
+    <div class="category">
+        <div>TRAINING CENTER</div>
+    </div><!-- /.category -->
+</div><!-- /.wrapper-category -->
+
+<div class="wrapper">
+    <h2>段落とリスト</h2>
+    <p id="paragraph" class="paragraph" title="&lt;p id=&quot;paragraph&quot; class=&quot;paragraph&quot;&gt;">段落</p>
+    <ul id="unordered" class="unordered">
+        <li title="&lt;ul id=&quot;unordered&quot; class=&quot;unordered&quot;&gt; &lt;li&gt;">非序列リスト項目</li>
+        <li title="&lt;ul id=&quot;unordered&quot; class=&quot;unordered&quot;&gt; &lt;li&gt;">非序列リスト項目</li>
+        <li title="&lt;ul id=&quot;unordered&quot; class=&quot;unordered&quot;&gt; &lt;li&gt;">非序列リスト項目</li>
+    </ul>
+    <ol id="ordered" class="ordered">
+        <li title="&lt;ul id=&quot;ordered&quot; class=&quot;ordered&quot;&gt; &lt;li&gt;">序列リスト項目</li>
+        <li title="&lt;ul id=&quot;ordered&quot; class=&quot;ordered&quot;&gt; &lt;li&gt;">序列リスト項目</li>
+        <li title="&lt;ul id=&quot;ordered&quot; class=&quot;ordered&quot;&gt; &lt;li&gt;">序列リスト項目</li>
+    </ol>
+    <h2>テーブル</h2>
+    <table id="table" class="table">
+        <tr>
+            <th title="&lt;table id=&quot;table&quot; class=&quot;table&quot;&gt;&lt;th&gt;">テーブルヘッダー</th>
+            <th title="&lt;table id=&quot;table&quot; class=&quot;table&quot;&gt;&lt;th&gt;">テーブルヘッダー</th>
+            <th title="&lt;table id=&quot;table&quot; class=&quot;table&quot;&gt;&lt;th&gt;">テーブルヘッダー</th>
+        </tr>
+        <tr>
+            <td title="&lt;td&gt;">テーブルL1R1</td>
+            <td title="&lt;td&gt;">テーブルL1R2</td>
+            <td title="&lt;td&gt;">テーブルL1R3</td>
+        </tr>
+        <tr>
+            <td title="&lt;td&gt;">テーブルL2R1</td>
+            <td title="&lt;td&gt;">テーブルL2R2</td>
+            <td title="&lt;td&gt;">テーブルL2R3</td>
+        </tr>
+        <tr>
+            <td title="&lt;td&gt;">テーブルL3R3</td>
+            <td title="&lt;td&gt;">テーブルL3R3</td>
+            <td title="&lt;td&gt;">テーブルL3R3</td>
+        </tr>
+    </table>
+    <h2>リンク</h2>
+    <p><a href="./" class="internal" title="&lt;a class=&quot;internal&quot;&gt;">内部リンク</a></p>
+    <p><a href="http://www.solidpanda.com/" class="external">外部リンク</a></p>
+    <p><a href="http://www.solidpanda.com/" class="external" target="_blank">外部リンク+target属性</a></p>
+    <h2>フォーム</h2>
+    <form id="form" action="#">
+        <p><code>&lt;form id=&quot;form&quot;&gt;</code></p>
+        <label><input type="text" id="textfield" title="&lt;input type=&quot;text&quot; id=&quot;textfield&quot;&gt;">テキストフィールド</label><br>
+        <div class="checkbox_group">
+            <label><input type="checkbox" name="checkbox" value="1" title="&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;1&quot;&gt;">チェックボックス1</label><br>
+            <label><input type="checkbox" name="checkbox" value="2" title="&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;2&quot;&gt;">チェックボックス2</label><br>
+            <label><input type="checkbox" name="checkbox" value="3" title="&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;3&quot;&gt;">チェックボックス3</label><br>
+        </div>
+        <div class="radio_group">
+            <label><input type="radio" name="radio" value="a" title="&lt;input type=&quot;radio&quot; name=&quot;radio&quot; value=&quot;a&quot;&gt;">ラジオボタン1</label><br>
+            <label><input type="radio" name="radio" value="b" title="&lt;input type=&quot;radio&quot; name=&quot;radio&quot; value=&quot;b&quot;&gt;">ラジオボタン2</label><br>
+            <label><input type="radio" name="radio" value="c" title="&lt;input type=&quot;radio&quot; name=&quot;radio&quot; value=&quot;c&quot;&gt;">ラジオボタン3</label><br>
+        </div>
+        <div class="submit_group">
+            <input type="submit" name="submit" title="&lt;input type=&quot;submit&quot; name=&quot;submit &quot;&gt;">
+        </div>
+    </form>
+</div>
+
+<div class="wrapper-footer">
+    <div class="footer">
+        <p>このページは ©jQuero から転載させていただきました</p>
+    </div><!-- /.footer -->
+</div><!-- /.wrapper-footer -->
+
+</body>
+</html>
