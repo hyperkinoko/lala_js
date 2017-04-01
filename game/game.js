@@ -5,40 +5,14 @@ $(document).ready(function() {
     jQuery('#field_controller').show();
     jQuery('#battle_controller').hide();
     jQuery('#enemy_panel').hide();
-    player = new Player("ゆうしゃ", 1, 10, 5, 2, 5, 0, 0);
+    player = new Player("ゆうしゃ", "", 1, 10, 5, 2, 5, 0, 0);
     player.dispStatus();
 });
 
-class Enemy {
-    constructor(name, imgfile, hp_max, attack, defense, agility, exp, gold) {
+class Character {
+    constructor(name, imgfile, level, hp_max, attack, defense, agility, exp, gold) {
         this.name = name;
         this.imgfile = imgfile;
-        this.hp_max = hp_max;
-        this.hp = hp_max;
-        this.attack = attack;
-        this.defense = defense;
-        this.agility = agility;
-        this.exp = exp;
-        this.gold = gold;
-    }
-
-    dispStatus() {
-        var statusArea = "#enemy_status";
-        jQuery('#enemy_image img').attr('src', './images/enemy/' + this.imgfile + '.png');
-        jQuery(statusArea + ' .name').text(this.name);
-        jQuery(statusArea + ' .hp_max').text(this.hp_max);
-        jQuery(statusArea + ' .hp').text(this.hp);
-        jQuery(statusArea + ' .attack').text(this.attack);
-        jQuery(statusArea + ' .defense').text(this.defense);
-        jQuery(statusArea + ' .agility').text(this.agility);
-        jQuery(statusArea + ' .exp').text(this.exp);
-        jQuery(statusArea + ' .gold').text(this.gold);
-    }
-}
-
-class Player {
-    constructor(name, level, hp_max, attack, defense, agility, exp, gold) {
-        this.name = name;
         this.level = level;
         this.hp_max = hp_max;
         this.hp = hp_max;
@@ -49,21 +23,44 @@ class Player {
         this.gold = gold;
     }
 
+    dispStatus() {
+        jQuery(this.statusArea + ' .name').text(this.name);
+        jQuery(this.statusArea + ' .hp_max').text(this.hp_max);
+        jQuery(this.statusArea + ' .hp').text(this.hp);
+        jQuery(this.statusArea + ' .attack').text(this.attack);
+        jQuery(this.statusArea + ' .defense').text(this.defense);
+        jQuery(this.statusArea + ' .agility').text(this.agility);
+        jQuery(this.statusArea + ' .exp').text(this.exp);
+        jQuery(this.statusArea + ' .gold').text(this.gold);
+    }
+
+}
+
+class Enemy extends Character {
+    constructor(name, imgfile, level, hp_max, attack, defense, agility, exp, gold) {
+        super(name, imgfile, level, hp_max, attack, defense, agility, exp, gold);
+        this.statusArea = "#enemy_status";
+    }
+
+    dispStatus() {
+        jQuery('#enemy_image img').attr('src', './images/enemy/' + this.imgfile + '.png');
+        super.dispStatus();
+    }
+}
+
+class Player extends Character {
+    constructor(name, imgfile, level, hp_max, attack, defense, agility, exp, gold) {
+        super(name, imgfile, level, hp_max, attack, defense, agility, exp, gold);
+        this.statusArea = "#player_status";
+    }
+
     setAction(action) {
         this.action = action;
     }
 
     dispStatus() {
-        var statusArea = "#player_status";
-        jQuery(statusArea + ' .name').text(this.name);
-        jQuery(statusArea + ' .level').text(this.level);
-        jQuery(statusArea + ' .hp_max').text(this.hp_max);
-        jQuery(statusArea + ' .hp').text(this.hp);
-        jQuery(statusArea + ' .attack').text(this.attack);
-        jQuery(statusArea + ' .defense').text(this.defense);
-        jQuery(statusArea + ' .agility').text(this.agility);
-        jQuery(statusArea + ' .exp').text(this.exp);
-        jQuery(statusArea + ' .gold').text(this.gold);
+        jQuery(this.statusArea + ' .level').text(this.level);
+        super.dispStatus();
     }
 
 }
@@ -91,7 +88,7 @@ function startBattle() {
     jQuery('#enemy_panel').show();
 
     // 敵を作る
-    enemy = new Enemy("スリャイム", "slime", 6, 3, 2, 4, 8, 3);
+    enemy = new Enemy("スリャイム", "slime", 0, 6, 3, 2, 4, 8, 3);
     jQuery('#message_panel').text(enemy.name + "があらわれた！");
     enemy.dispStatus();
 }
