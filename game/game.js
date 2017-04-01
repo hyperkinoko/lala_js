@@ -1,9 +1,13 @@
-var state = 0;
-jQuery('#field_controller').show();
-jQuery('#battle_controller').hide();
-jQuery('#enemy_panel').hide();
-var player = new Player("ゆうしゃ", 1, 16, 5, 2, 5, 0, 0);
-player.dispStatus();
+var player;
+var enemy;
+
+$(document).ready(function() {
+    jQuery('#field_controller').show();
+    jQuery('#battle_controller').hide();
+    jQuery('#enemy_panel').hide();
+    player = new Player("ゆうしゃ", 1, 10, 5, 2, 5, 0, 0);
+    player.dispStatus();
+});
 
 class Enemy {
     constructor(name, imgfile, hp_max, attack, defense, agility, exp, gold) {
