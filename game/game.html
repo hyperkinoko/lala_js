@@ -4,26 +4,29 @@
     <meta charset="UTF-8">
     <title>虎クエ</title>
     <link rel="stylesheet" href="game.css">
+    <script src="../jquery.min.js"></script>
     <script src="game.js"></script>
 </head>
-<body>
+<body onload="init()">
 <div id="game_panel">
     <div id="main_panel">
-        <div id="enemy_panel">
-            <div id="enemy_image">
-                <img src="./images/enemy/slime.png">
+        <div id="wrapper">
+            <div id="enemy_panel">
+                <div id="enemy_image">
+                    <img src="images/enemy/slime.png">
+                </div>
+                <ul id="enemy_status">
+                    <li><span class="name">ななし</span></li>
+                    <li>HP: <span class="hp"></span>0/0<span class="hp_max"></span></li>
+                    <li>攻撃力: <span class="attack">0</span></li>
+                    <li>守備力: <span calss="defense">0</span></li>
+                    <li>素早さ: <span calss="agility">0</span></li>
+                    <li>経験値: <span class="exp">0</span></li>
+                    <li>ゴールド: <span class="gold">0</span></li>
+                </ul>
             </div>
-            <ul id="enemy_status">
-                <li><span class="name">ななし</span></li>
-                <li>HP: <span class="hp"></span>0/0<span class="hp_max"></span></li>
-                <li>攻撃力: <span class="attack">0</span></li>
-                <li>守備力: <span calss="defense">0</span></li>
-                <li>素早さ: <span calss="agility">0</span></li>
-                <li>経験値: <span class="exp">0</span></li>
-                <li>ゴールド: <span class="gold">0</span></li>
-            </ul>
         </div>
-        <div id="message_panel">ここにメッセージ</div>
+        <div id="message_panel">ゲームスタート</div>
     </div>
 
     <div id="player_panel">
@@ -50,5 +53,13 @@
         </ul>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        var state = 0;
+        jQuery('#field_controller').show();
+        jQuery('#battle_controller').hide();
+        jQuery('#enemy_panel').hide();
+    });
+</script>
 </body>
 </html>

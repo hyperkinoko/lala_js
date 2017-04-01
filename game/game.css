@@ -9,9 +9,11 @@
     background-image: url("./images/woods_bg.png");
     color: white;
 }
+#wrapper {
+    flex: 1;
+}
 
 #enemy_panel {
-    flex: 1;
     margin: 10px 10px 10px 10px;
     display: flex;
 }
