@@ -45,7 +45,6 @@ function escape() {
 }
 
 function move() {
-    state = 1;
     startBattle();
 }
 
