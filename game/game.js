@@ -26,7 +26,7 @@ class Enemy {
 }
 
 class Player {
-    constructor(name, level, hp_max, attack, defense, agility, exp) {
+    constructor(name, level, hp_max, attack, defense, agility, exp, gold) {
         this.name = name;
         this.level = level;
         this.hp_max = hp_max;
@@ -35,6 +35,7 @@ class Player {
         this.defense = defense;
         this.agility = agility;
         this.exp = exp;
+        this.gold = gold;
     }
 
     dispStatus() {
@@ -47,6 +48,7 @@ class Player {
         jQuery(statusArea + ' .defense').text(this.defense);
         jQuery(statusArea + ' .agility').text(this.agility);
         jQuery(statusArea + ' .exp').text(this.exp);
+        jQuery(statusArea + ' .gold').text(this.gold);
     }
 
 }
