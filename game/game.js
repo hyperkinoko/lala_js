@@ -1,5 +1,5 @@
-var jsonStringDataOfPlayer ='{"name":"ゆうしゃ", "imgfile":"", "level":1, "hp_max":10, "attack":5, "defense":2, "agility":5, "exp":0, "gold":0}';
-var jsonStringDataOfEnemy = '{"name":"スリャイム", "imgfile":"slime", "level":0, "hp_max":6, "attack":3, "defense":2, "agility":4, "exp":8, "gold":3}';
+var jsonDataOfPlayer = JSON.parse('{"name":"ゆうしゃ", "imgfile":"", "level":1, "hp_max":10, "attack":5, "defense":2, "agility":5, "exp":0, "gold":0}');
+var jsonDataOfEnemy = JSON.parse('{"name":"スリャイム", "imgfile":"slime", "level":0, "hp_max":6, "attack":3, "defense":2, "agility":4, "exp":8, "gold":3}');
 
 var player;
 var enemy;
@@ -8,23 +8,14 @@ $(document).ready(function() {
     jQuery('#field_controller').show();
     jQuery('#battle_controller').hide();
     jQuery('#enemy_panel').hide();
-    player = new Player(jsonStringDataOfPlayer);
+    player = new Player(jsonDataOfPlayer);
     player.dispStatus();
 });
 
 class Character {
-    constructor(jsonData) {
-        let jsonObject = JSON.parse(jsonData);
-        this.name = jsonObject.name;
-        this.imgfile = jsonObject.imgfile;
-        this.level = jsonObject.level;
-        this.hp_max = jsonObject.hp_max;
-        this.hp = jsonObject.hp_max;
-        this.attack = jsonObject.attack;
-        this.defense = jsonObject.defense;
-        this.agility = jsonObject.agility;
-        this.exp = jsonObject.exp;
-        this.gold = jsonObject.gold;
+    constructor(data) {
+        Object.assign(this, data);
+        this.hp = data.hp_max;
     }
 
     dispStatus() {
@@ -41,20 +32,20 @@ class Character {
 }
 
 class Enemy extends Character {
-    constructor(name, imgfile, level, hp_max, attack, defense, agility, exp, gold) {
-        super(name, imgfile, level, hp_max, attack, defense, agility, exp, gold);
+    constructor(data) {
+        super(data);
         this.statusArea = "#enemy_status";
     }
 
     dispStatus() {
-        jQuery('#enemy_image img').attr('src', './images/enemy/' + this.imgfile + '.png');
         super.dispStatus();
+        jQuery('#enemy_image img').attr('src', './images/enemy/' + this.imgfile + '.png');
     }
 }
 
 class Player extends Character {
-    constructor(name, imgfile, level, hp_max, attack, defense, agility, exp, gold) {
-        super(name, imgfile, level, hp_max, attack, defense, agility, exp, gold);
+    constructor(data) {
+        super(data);
         this.statusArea = "#player_status";
     }
 
@@ -63,8 +54,8 @@ class Player extends Character {
     }
 
     dispStatus() {
-        jQuery(this.statusArea + ' .level').text(this.level);
         super.dispStatus();
+        jQuery(this.statusArea + ' .level').text(this.level);
     }
 
 }
@@ -92,7 +83,7 @@ function startBattle() {
     jQuery('#enemy_panel').show();
 
     // 敵を作る
-    enemy = new Enemy(jsonStringDataOfEnemy);
+    enemy = new Enemy(jsonDataOfEnemy);
     jQuery('#message_panel').text(enemy.name + "があらわれた！");
     enemy.dispStatus();
 }
