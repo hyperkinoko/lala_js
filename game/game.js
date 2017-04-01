@@ -12,16 +12,43 @@ class Enemy {
     }
 
     dispStatus() {
+        var statusArea = "#enemy_status"
         jQuery('#enemy_image img').attr('src', './images/enemy/' + this.imgfile + '.png');
-        jQuery('#enemy_status .name').text(this.name);
-        jQuery('#enemy_status .hp_max').text(this.hp_max);
-        jQuery('#enemy_status .hp').text(this.hp);
-        jQuery('#enemy_status .attack').text(this.attack);
-        jQuery('#enemy_status .defense').text(this.defense);
-        jQuery('#enemy_status .agility').text(this.agility);
-        jQuery('#enemy_status .exp').text(this.exp);
-        jQuery('#enemy_status .gold').text(this.gold);
+        jQuery(statusArea + ' .name').text(this.name);
+        jQuery(statusArea + ' .hp_max').text(this.hp_max);
+        jQuery(statusArea + ' .hp').text(this.hp);
+        jQuery(statusArea + ' .attack').text(this.attack);
+        jQuery(statusArea + ' .defense').text(this.defense);
+        jQuery(statusArea + ' .agility').text(this.agility);
+        jQuery(statusArea + ' .exp').text(this.exp);
+        jQuery(statusArea + ' .gold').text(this.gold);
     }
+}
+
+class Player {
+    constructor(name, level, hp_max, attack, defense, agility, exp) {
+        this.name = name;
+        this.level = level;
+        this.hp_max = hp_max;
+        this.hp = hp_max;
+        this.attack = attack;
+        this.defense = defense;
+        this.agility = agility;
+        this.exp = exp;
+    }
+
+    dispStatus() {
+        var statusArea = "#player_status";
+        jQuery(statusArea + ' .name').text(this.name);
+        jQuery(statusArea + ' .level').text(this.level);
+        jQuery(statusArea + ' .hp_max').text(this.hp_max);
+        jQuery(statusArea + ' .hp').text(this.hp);
+        jQuery(statusArea + ' .attack').text(this.attack);
+        jQuery(statusArea + ' .defense').text(this.defense);
+        jQuery(statusArea + ' .agility').text(this.agility);
+        jQuery(statusArea + ' .exp').text(this.exp);
+    }
+
 }
 
 function attack() {
