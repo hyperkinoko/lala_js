@@ -1,3 +1,11 @@
+var enemy;
+
+$(document).ready(function() {
+    jQuery('#field_controller').show();
+    jQuery('#battle_controller').hide();
+    jQuery('#enemy_panel').hide();
+});
+
 class Enemy {
     constructor(name, imgfile, hp_max, attack, defense, agility, exp, gold) {
         this.name = name;
@@ -47,7 +55,7 @@ function startBattle() {
     jQuery('#enemy_panel').show();
 
     // 敵を作る
-    var enemy = new Enemy("スリャイム", "slime", 6, 1, 2, 4, 8, 3);
+    enemy = new Enemy("スリャイム", "slime", 6, 1, 2, 4, 8, 3);
     jQuery('#message_panel').text(enemy.name + "があらわれた！");
     enemy.dispStatus();
 }

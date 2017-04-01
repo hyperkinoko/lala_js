@@ -7,7 +7,7 @@
     <script src="../jquery.min.js"></script>
     <script src="game.js"></script>
 </head>
-<body onload="init()">
+<body>
 <div id="game_panel">
     <div id="main_panel">
         <div id="wrapper">
@@ -16,13 +16,13 @@
                     <img src="images/enemy/slime.png">
                 </div>
                 <ul id="enemy_status">
-                    <li><span class="name">ななし</span></li>
-                    <li>HP: <span class="hp">0</span>/<span class="hp_max">0</span></li>
-                    <li>攻撃力: <span class="attack">0</span></li>
-                    <li>守備力: <span class="defense">0</span></li>
-                    <li>素早さ: <span class="agility">0</span></li>
-                    <li>経験値: <span class="exp">0</span></li>
-                    <li>ゴールド: <span class="gold">0</span></li>
+                    <li><span class="name"></span></li>
+                    <li>HP: <span class="hp"></span>/<span class="hp_max"></span></li>
+                    <li>攻撃力: <span class="attack"></span></li>
+                    <li>守備力: <span class="defense"></span></li>
+                    <li>素早さ: <span class="agility"></span></li>
+                    <li>経験値: <span class="exp"></span></li>
+                    <li>ゴールド: <span class="gold"></span></li>
                 </ul>
             </div>
         </div>
@@ -38,28 +38,20 @@
             </div>
 
             <div id="field_controller" class="button_container">
-                <div class="command_button" id="next" onclick="move()">すすむ</div>
+                <div class="command_button" id="move" onclick="move()">すすむ</div>
             </div>
 
         </div>
         <ul id="player_status">
             <li><span class="name">ななし</span></li>
             <li>Lv.: <span class="level">0</span></li>
-            <li>HP: <span class="hp"></span>0/0<span class="hp_max"></span></li>
+            <li>HP: <span class="hp">0</span>/<span class="hp_max">0</span></li>
             <li>攻撃力: <span class="attack">0</span></li>
-            <li>守備力: <span calss="defense">0</span></li>
-            <li>素早さ: <span calss="agility">0</span></li>
+            <li>守備力: <span class="defense">0</span></li>
+            <li>素早さ: <span class="agility">0</span></li>
             <li>経験値: <span class="exp">0</span></li>
         </ul>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        var state = 0;
-        jQuery('#field_controller').show();
-        jQuery('#battle_controller').hide();
-        jQuery('#enemy_panel').hide();
-    });
-</script>
 </body>
 </html>
