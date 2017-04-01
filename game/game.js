@@ -1,3 +1,6 @@
+var player;
+var enemy;
+
 class Enemy {
     constructor(name, imgfile, hp_max, attack, defense, agility, exp, gold) {
         this.name = name;
@@ -38,6 +41,10 @@ class Player {
         this.gold = gold;
     }
 
+    setAction(action) {
+        this.action = action;
+    }
+
     dispStatus() {
         var statusArea = "#player_status";
         jQuery(statusArea + ' .name').text(this.name);
@@ -54,7 +61,7 @@ class Player {
 }
 
 function attack() {
-    alert("攻撃する");
+    player.setAction("attack");
 }
 
 function defense() {
@@ -62,7 +69,7 @@ function defense() {
 }
 
 function escape() {
-    alert("にげる");
+    endBattle(false);
 }
 
 function move() {
@@ -76,7 +83,27 @@ function startBattle() {
     jQuery('#enemy_panel').show();
 
     // 敵を作る
-    var enemy = new Enemy("スリャイム", "slime", 6, 1, 2, 4, 8, 3);
+    enemy = new Enemy("スリャイム", "slime", 6, 1, 2, 4, 8, 3);
     jQuery('#message_panel').text(enemy.name + "があらわれた！");
     enemy.dispStatus();
+}
+
+function battle() {
+    // 素早さの大きい方から攻撃する
+    var enemy_damage = Math.max(player.attack - enemy.defense, 0);
+    var player_damage = Math.max(enemy.attack - player.defense, 0);
+    player.hp = player.hp - player_damage;
+    enemy.hp = enemy.hp -enemy_damage;
+    alert("攻撃する");
+}
+
+function endBattle(defeat) {
+    if(defeat) {
+        alert("てきにかった");
+    } else {
+        jQuery('#message_panel').text(player.name + "はにげだした");
+    }
+    jQuery('#field_controller').show();
+    jQuery('#battle_controller').hide();
+    jQuery('#enemy_panel').hide();
 }
