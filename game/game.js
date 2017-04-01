@@ -1,6 +1,14 @@
 var player;
 var enemy;
 
+$(document).ready(function() {
+    jQuery('#field_controller').show();
+    jQuery('#battle_controller').hide();
+    jQuery('#enemy_panel').hide();
+    player = new Player("ゆうしゃ", 1, 10, 5, 2, 5, 0, 0);
+    player.dispStatus();
+});
+
 class Enemy {
     constructor(name, imgfile, hp_max, attack, defense, agility, exp, gold) {
         this.name = name;
@@ -62,6 +70,7 @@ class Player {
 
 function attack() {
     player.setAction("attack");
+    turn();
 }
 
 function defense() {
@@ -73,7 +82,6 @@ function escape() {
 }
 
 function move() {
-    state = 1;
     startBattle();
 }
 
@@ -83,27 +91,74 @@ function startBattle() {
     jQuery('#enemy_panel').show();
 
     // 敵を作る
-    enemy = new Enemy("スリャイム", "slime", 6, 1, 2, 4, 8, 3);
+    enemy = new Enemy("スリャイム", "slime", 6, 3, 2, 4, 8, 3);
     jQuery('#message_panel').text(enemy.name + "があらわれた！");
     enemy.dispStatus();
 }
 
-function battle() {
+function turn() {
     // 素早さの大きい方から攻撃する
-    var enemy_damage = Math.max(player.attack - enemy.defense, 0);
-    var player_damage = Math.max(enemy.attack - player.defense, 0);
-    player.hp = player.hp - player_damage;
-    enemy.hp = enemy.hp -enemy_damage;
-    alert("攻撃する");
+    if(enemy.agility > player.agility) {
+        // 敵のほうが素早さが大きい
+        var damage = Math.max(enemy.attack - player.defense, 0);
+        player.hp = player.hp - damage;
+        // 生死判定
+        if(player.hp > 0) {
+            damage = Math.max(player.attack - enemy.defense, 0);
+            enemy.hp = enemy.hp - damage;
+            if(enemy.hp > 0) {
+                player.dispStatus();
+                enemy.dispStatus();
+                return;
+            } else {
+                // 敵に勝った
+                endBattle(true);
+            }
+        } else {
+            // 死んでしまった
+            gameOver();
+        }
+
+    } else {
+        // プレイヤーのほうが素早さが大きいか同じ
+        var damage = Math.max(player.attack - enemy.defense, 0);
+        enemy.hp = enemy.hp - damage;
+        if(enemy.hp > 0) {
+            damage = Math.max(enemy.attack - player.defense, 0);
+            player.hp = player.hp - damage;
+            if(player.hp > 0) {
+                player.dispStatus();
+                enemy.dispStatus();
+                return;
+            } else {
+                // 死んでしまった
+                player.dispStatus();
+                gameOver();
+            }
+        } else {
+            // 敵に勝った
+            endBattle(true);
+        }
+    }
 }
 
 function endBattle(defeat) {
     if(defeat) {
-        alert("てきにかった");
+        player.exp += enemy.exp;
+        player.gold += enemy.gold;
+        player.dispStatus();
+        jQuery('#message_panel').text(enemy.name + "をたおした！");
     } else {
         jQuery('#message_panel').text(player.name + "はにげだした");
     }
     jQuery('#field_controller').show();
+    jQuery('#battle_controller').hide();
+    jQuery('#enemy_panel').hide();
+}
+
+function gameOver() {
+    jQuery('#message_panel').text(player.name + "は死んでしまった");
+    jQuery('#field_controller').hide();
     jQuery('#battle_controller').hide();
     jQuery('#enemy_panel').hide();
 }
