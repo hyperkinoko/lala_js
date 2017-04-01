@@ -7,7 +7,7 @@
     <script src="../jquery.min.js"></script>
     <script src="game.js"></script>
 </head>
-<body onload="init()">
+<body>
 <div id="game_panel">
     <div id="main_panel">
         <div id="wrapper">
@@ -16,13 +16,13 @@
                     <img>
                 </div>
                 <ul id="enemy_status">
-                    <li><span class="name">ななし</span></li>
-                    <li>HP: <span class="hp">0</span>/<span class="hp_max">0</span></li>
-                    <li>攻撃力: <span class="attack">0</span></li>
-                    <li>守備力: <span class="defense">0</span></li>
-                    <li>素早さ: <span class="agility">0</span></li>
-                    <li>経験値: <span class="exp">0</span></li>
-                    <li>ゴールド: <span class="gold">0</span></li>
+                    <li><span class="name"></span></li>
+                    <li>HP: <span class="hp"></span>/<span class="hp_max"></span></li>
+                    <li>攻撃力: <span class="attack"></span></li>
+                    <li>守備力: <span class="defense"></span></li>
+                    <li>素早さ: <span class="agility"></span></li>
+                    <li>経験値: <span class="exp"></span></li>
+                    <li>ゴールド: <span class="gold"></span></li>
                 </ul>
             </div>
         </div>
@@ -50,6 +50,7 @@
             <li>守備力: <span class="defense"></span></li>
             <li>素早さ: <span class="agility"></span></li>
             <li>経験値: <span class="exp"></span></li>
+            <li>ゴールド: <span class="gold"></span></li>
         </ul>
     </div>
 </div>
@@ -60,7 +61,7 @@
         jQuery('#field_controller').show();
         jQuery('#battle_controller').hide();
         jQuery('#enemy_panel').hide();
-        var player = new Player("ゆうしゃ", 1, 16, 5, 2, 5, 0);
+        var player = new Player("ゆうしゃ", 1, 16, 5, 2, 5, 0, 0);
         player.dispStatus();
     });
 </script>
