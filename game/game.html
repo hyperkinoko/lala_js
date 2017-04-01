@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>虎クエ</title>
+    <link rel="stylesheet" href="game.css">
+    <script src="game.js"></script>
+</head>
+<body>
+<div id="game_panel">
+    <div id="main_panel">
+        <div id="enemy_panel">
+            <div id="enemy_image">
+                <img src="./images/enemy/slime.png">
+            </div>
+            <ul id="enemy_status">
+                <li><span class="name">ななし</span></li>
+                <li>HP: <span class="hp"></span>0/0<span class="hp_max"></span></li>
+                <li>攻撃力: <span class="attack">0</span></li>
+                <li>守備力: <span calss="defense">0</span></li>
+                <li>素早さ: <span calss="agility">0</span></li>
+                <li>経験値: <span class="exp">0</span></li>
+                <li>ゴールド: <span class="gold">0</span></li>
+            </ul>
+        </div>
+        <div id="message_panel">ここにメッセージ</div>
+    </div>
+
+    <div id="player_panel">
+        <div id="controller_panel">
+            <div id="battle_controller" class="button_container">
+                <div class="command_button" id="attack" onclick="attack()">こうげき</div>
+                <div class="command_button" id="defense" onclick="defense()">ぼうぎょ</div>
+                <div class="command_button" id="escape" onclick="escape()">にげる</div>
+            </div>
+
+            <div id="field_controller" class="button_container">
+                <div class="command_button" id="next" onclick="move()">すすむ</div>
+            </div>
+
+        </div>
+        <ul id="player_status">
+            <li><span class="name">ななし</span></li>
+            <li>Lv.: <span class="level">0</span></li>
+            <li>HP: <span class="hp"></span>0/0<span class="hp_max"></span></li>
+            <li>攻撃力: <span class="attack">0</span></li>
+            <li>守備力: <span calss="diffence">0</span></li>
+            <li>素早さ: <span calss="agility">0</span></li>
+            <li>経験値: <span class="exp">0</span></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

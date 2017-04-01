@@ -1,0 +1,75 @@
+#game_panel {
+    width: 450px;
+}
+
+#main_panel {
+    display: flex;
+    flex-direction: column;
+    height: 338px;
+    background-image: url("./images/woods_bg.png");
+    color: white;
+}
+
+#enemy_panel {
+    flex: 1;
+    margin: 10px 10px 10px 10px;
+    display: flex;
+}
+
+#enemy_image {
+    flex: 1;
+}
+
+#enemy_image img {
+    width: 100px;
+    height: 100px;
+}
+
+#enemy_status {
+    border: solid 2px white;
+    width: 70px;
+    height: 110px;
+    font-size: 10px;
+}
+
+#message_panel {
+    height: 50px;
+    border:solid 2px white;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+#player_panel {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#controller_panel {
+    flex: 1;
+    margin: 10px 10px 10px 10px;
+}
+
+.button_container {
+    display: flex;
+}
+
+.command_button {
+    flex: 1;
+    background-color: #41a799;
+    border: solid 2px #3b3b3b;
+    color: white;
+    text-align: center;
+}
+
+#player_status {
+    border: solid 1px blue;
+    width: 100px;
+    font-size: 10px;
+}
+
+
+
+
+li {
+    list-style-type: none;
+}
