@@ -12,7 +12,7 @@ class Enemy {
     }
 
     dispStatus() {
-        var statusArea = "#enemy_status"
+        var statusArea = "#enemy_status";
         jQuery('#enemy_image img').attr('src', './images/enemy/' + this.imgfile + '.png');
         jQuery(statusArea + ' .name').text(this.name);
         jQuery(statusArea + ' .hp_max').text(this.hp_max);
