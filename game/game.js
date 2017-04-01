@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    jQuery('#field_controller').show();
+    jQuery('#battle_controller').hide();
+    jQuery('#enemy_panel').hide();
+});
+
 function attack() {
     alert("攻撃する");
 }
@@ -11,7 +17,6 @@ function escape() {
 }
 
 function move() {
-    state = 1;
     startBattle();
 }
 
