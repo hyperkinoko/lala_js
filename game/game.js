@@ -77,7 +77,6 @@ function escape() {
 }
 
 function move() {
-    state = 1;
     startBattle();
 }
 
@@ -87,7 +86,7 @@ function startBattle() {
     jQuery('#enemy_panel').show();
 
     // 敵を作る
-    var enemy = new Enemy("スリャイム", "slime", 6, 1, 2, 4, 8, 3);
+    enemy = new Enemy("スリャイム", "slime", 6, 1, 2, 4, 8, 3);
     jQuery('#message_panel').text(enemy.name + "があらわれた！");
     enemy.dispStatus();
 }
