@@ -1,3 +1,6 @@
+var jsonStringDataOfPlayer ='{"name":"ゆうしゃ", "imgfile":"", "level":1, "hp_max":10, "attack":5, "defense":2, "agility":5, "exp":0, "gold":0}';
+var jsonStringDataOfEnemy = '{"name":"スリャイム", "imgfile":"slime", "level":0, "hp_max":6, "attack":3, "defense":2, "agility":4, "exp":8, "gold":3}';
+
 var player;
 var enemy;
 
@@ -5,22 +8,23 @@ $(document).ready(function() {
     jQuery('#field_controller').show();
     jQuery('#battle_controller').hide();
     jQuery('#enemy_panel').hide();
-    player = new Player("ゆうしゃ", "", 1, 10, 5, 2, 5, 0, 0);
+    player = new Player(jsonStringDataOfPlayer);
     player.dispStatus();
 });
 
 class Character {
-    constructor(name, imgfile, level, hp_max, attack, defense, agility, exp, gold) {
-        this.name = name;
-        this.imgfile = imgfile;
-        this.level = level;
-        this.hp_max = hp_max;
-        this.hp = hp_max;
-        this.attack = attack;
-        this.defense = defense;
-        this.agility = agility;
-        this.exp = exp;
-        this.gold = gold;
+    constructor(jsonData) {
+        let jsonObject = JSON.parse(jsonData);
+        this.name = jsonObject.name;
+        this.imgfile = jsonObject.imgfile;
+        this.level = jsonObject.level;
+        this.hp_max = jsonObject.hp_max;
+        this.hp = jsonObject.hp_max;
+        this.attack = jsonObject.attack;
+        this.defense = jsonObject.defense;
+        this.agility = jsonObject.agility;
+        this.exp = jsonObject.exp;
+        this.gold = jsonObject.gold;
     }
 
     dispStatus() {
@@ -88,7 +92,7 @@ function startBattle() {
     jQuery('#enemy_panel').show();
 
     // 敵を作る
-    enemy = new Enemy("スリャイム", "slime", 0, 6, 3, 2, 4, 8, 3);
+    enemy = new Enemy(jsonStringDataOfEnemy);
     jQuery('#message_panel').text(enemy.name + "があらわれた！");
     enemy.dispStatus();
 }
